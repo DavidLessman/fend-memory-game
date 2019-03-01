@@ -1,13 +1,13 @@
-#Memory Game
+# Memory Game
 
-##Table of Contents
+## Table of Contents
 
-*[Instrutions] (#Instructions)
-*[Syntax] (#Syntax)
-*[Future Modifications] (#Future Modifications)
-*[Contributions] (Contributions)
+* [Instrutions] (#Instructions)
+* [Syntax] (#Syntax)
+* [Future Modifications] (#Future Modifications)
+* [Contributions] (Contributions)
 
-##Instructions
+## Instructions
 
 Simply click a card to start. The timer function does not begin until you click the first card. The timer does not affect your final score.
 
@@ -23,12 +23,12 @@ When you complete the board you will get a pop up telling you your time and numb
 - moves: one move is a pair of cards being selected
 - stars: the visual representation of your score
 
-##Fututre Modifications
+## Fututre Modifications
 - the card array in the js file has each card listed twice. would like to change that to each card being listed once and being dupiclated before being added to the board.
 - would like to add move cards to the card array and have a dropdown allowing the user to select their number of cards.
 - difficulty dropdown that would change how long the cards are displayed before closing.
 - experiment with basing the score off the timer rather than moves. possibly a combination of the two.
 
-##Contributions
+## Contributions
 - I used the Shuffle function from http://stackoverflow.com/a/2450976 as provided by Udacity
 - I used the CardArray from Mike's Webinar
