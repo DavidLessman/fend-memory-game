@@ -1,20 +1,34 @@
-# Memory Game Project
+#Memory Game
 
-## Table of Contents
+##Table of Contents
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+*[Instrutions] (#Instructions)
+*[Syntax] (#Syntax)
+*[Future Modifications] (#Future Modifications)
+*[Contributions] (Contributions)
 
-## Instructions
+##Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Simply click a card to start. The timer function does not begin until you click the first card. The timer does not affect your final score.
 
-To get started, open `js/app.js` and start building out the app's functionality
+Stars will update as you play the game. This is based on the number of moves. One move is when a pair of cards have been selected.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+When you complete the board you will get a pop up telling you your time and number of stars (score). Click "OK" to reset the board and play again, or "Cancel" to go back to the board.
 
-## Contributing
+## Syntax
+- board: the clickable playing field
+- card / cards: the parts that change and can be matched
+- open card: 'flipping' the card so that the symbol is visible
+- close card: 'flipping' an open card so that the symbol is hidden
+- moves: one move is a pair of cards being selected
+- stars: the visual representation of your score
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+##Fututre Modifications
+- the card array in the js file has each card listed twice. would like to change that to each card being listed once and being dupiclated before being added to the board.
+- would like to add move cards to the card array and have a dropdown allowing the user to select their number of cards.
+- difficulty dropdown that would change how long the cards are displayed before closing.
+- experiment with basing the score off the timer rather than moves. possibly a combination of the two.
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+##Contributions
+- I used the Shuffle function from http://stackoverflow.com/a/2450976 as provided by Udacity
+- I used the CardArray from Mike's Webinar
