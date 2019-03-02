@@ -49,7 +49,6 @@ function resetGame() {
         return generateCard(card);
     });
     cardsHTML = cardsHTML.concat(cardsHTML);
-    console.log(cardsHTML.length);
     shuffle(cardsHTML);
     board.innerHTML = cardsHTML.join('');
     moveCounter = 0;
