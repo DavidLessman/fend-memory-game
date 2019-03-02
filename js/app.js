@@ -49,15 +49,18 @@ function resetGame() {
     board.innerHTML = cardsHTML.join('');
     moveCounter = 0;
     moveDisplay.innerText = moveCounter;
-    timeStart = 0;
     matchCount = 0;
     calcStars(moveCounter);
+    timeStart = 0;
+    scorePanelTimer();
 };
 
 function respondToClick(evt) {
     if (timeStart == 0) {
         timeStart = Date.now();
+        scorePanelTimer();
     };
+
     if (evt.target.classList != "card") {
         console.log("please click a card");
     } else if (selectedCards.length < 2) {
@@ -65,10 +68,7 @@ function respondToClick(evt) {
         openCard(evt);
         if (selectedCards.length == 2) {
             addMove();
-            setTimeout(function(){
-                checkMatch(selectedCards);
-                selectedCards = [];
-            }, 1000);
+            checkMatch(selectedCards);
         };
     };
 };
@@ -93,9 +93,13 @@ function checkMatch(bar) {
         bar.forEach(function (card) {
             card.classList.remove('open', 'show');
             card.classList.add('match');
+            selectedCards = [];
         });
     } else {
-        closeCard(bar);
+        setTimeout(function () {
+            closeCard(bar);
+            selectedCards = [];
+        }, 1000);
     };
     if (matchCount == 8) {
         endGame();
@@ -146,6 +150,7 @@ function calcStars(i) {
  */
 function endGame() {
     calcGameTime();
+    scorePanelTimer();
     if (confirm(`You\'ve completed the game in ${moveCounter} moves.
                 \nIt took you ${totalGameTime} to complete.
                 \nYou earned ${stars} stars.
@@ -180,16 +185,33 @@ function calcGameTime() {
     if (gameSeconds > 60) {
         gameMinutes = Math.floor(gameSeconds / 60);
         gameSeconds = gameSeconds - (gameMinutes * 60);
+    } else {
+        gameMinutes = 0;
     };
     if (gameMinutes > 60) {
         gameHours = Math.floor(gameMinutes / 60);
         gameMinutes = gameMinutes - (gameHours * 60);
     };
-    if (gameSeconds < 60) {
-        gameMinutes = 0;
-    };
     displayTime(gameHours, gameMinutes, gameSeconds);
 };
+
+function scorePanelTimer() {
+    if (timeStart == 0) {
+        let scorePanelTime = document.getElementById('time');
+        scorePanelTime.innerText = `Time 0:00`;
+    } else if (moveCounter !==8) {
+        setInterval(function () {
+            calcGameTime();
+            let scorePanelTime = document.getElementById('time');
+            scorePanelTime.innerText = `Time ${totalGameTime}`;
+        }, 100);
+    } else {
+        calcGameTime();
+        let scorePanelTime = document.getElementById('time');
+        scorePanelTime.innerText = `Time ${totalGameTime}`;
+    };
+}
+
 
 
 resetGame();
