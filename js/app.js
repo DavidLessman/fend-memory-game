@@ -14,14 +14,14 @@ let totalGameTime = 0;
 // wanted to change it to only listing each card once in the array and have
 // the generateCard function or the cardsArray.Map (inside the resetGame function)
 // create the duplicate for each card. decided to focus on the project. 
-const CardsArray = ['fa-anchor', 'fa-anchor',
-    'fa-bicycle', 'fa-bicycle',
-    'fa-bolt', 'fa-bolt',
-    'fa-bomb', 'fa-bomb',
-    'fa-cube', 'fa-cube',
-    'fa-diamond', 'fa-diamond',
-    'fa-leaf', 'fa-leaf',
-    'fa-paper-plane-o', 'fa-paper-plane-o',
+const CardsArray = ['fa-anchor',
+    'fa-bicycle',
+    'fa-bolt',
+    'fa-bomb',
+    'fa-cube',
+    'fa-diamond',
+    'fa-leaf',
+    'fa-paper-plane-o',
 ];
 
 function generateCard(card) {
@@ -45,9 +45,11 @@ function shuffle(array) {
 
 function resetGame() {
     const board = document.querySelector('#board');
-    const cardsHTML = CardsArray.map(function (card) {
+    let cardsHTML = CardsArray.map(function (card) {
         return generateCard(card);
     });
+    cardsHTML = cardsHTML.concat(cardsHTML);
+    console.log(cardsHTML.length);
     shuffle(cardsHTML);
     board.innerHTML = cardsHTML.join('');
     moveCounter = 0;

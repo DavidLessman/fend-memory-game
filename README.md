@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Memory Game
 
 ## Table of Contents
@@ -68,4 +67,4 @@ When you complete the board you will get a pop up telling you your time and numb
 ## Contributions
 - I used the Shuffle function from http://stackoverflow.com/a/2450976 as provided by Udacity
 - I used the CardArray from Mike's Webinar
->>>>>>> fc5f2e427a81ad332c6b3c31757cc8661f262a4d
+
