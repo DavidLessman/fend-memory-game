@@ -2,19 +2,15 @@
 let Board = document.getElementById('board');
 let selectedCards = [];
 let restartButton = document.getElementById('restart');
-let moveCounter = 0;
-let matchCount = 0;
-let stars = 1;
+let moveCounter, matchCount, stars, timeStart, TimeEnd, totalGameTime;
 const moveDisplay = document.querySelector('.moves');
-let timeStart = 0;
-let timeEnd = 0;
-let totalGameTime = 0;
 
 // took this (CardsArray & generateCard() ) idea from the webinar.
 // wanted to change it to only listing each card once in the array and have
 // the generateCard function or the cardsArray.Map (inside the resetGame function)
 // create the duplicate for each card. decided to focus on the project. 
-const CardsArray = ['fa-anchor',
+const CardsArray = [
+    'fa-anchor',
     'fa-bicycle',
     'fa-bolt',
     'fa-bomb',
@@ -41,7 +37,7 @@ function shuffle(array) {
     }
 
     return array;
-}
+};
 
 function resetGame() {
     const board = document.querySelector('#board');
@@ -75,19 +71,19 @@ function respondToClick(evt) {
             }, 1000);
         };
     };
-}
+};
 
 function openCard(evt) {
     if (evt.target.classList != "open") {
         evt.target.classList.add('open', 'show');
     };
-}
+};
 
 function closeCard(foo) {
     foo.forEach(function (card) {
         card.classList.remove('open', 'show');
     });
-}
+};
 
 function checkMatch(bar) {
     let cardA = bar[0].querySelector('i').classList;
@@ -103,8 +99,8 @@ function checkMatch(bar) {
     };
     if (matchCount == 8) {
         endGame();
-    }
-}
+    };
+};
 
 // moves are only added when a second card is selected. 1 move = pair selected
 // defined in respondToClick()
@@ -112,7 +108,7 @@ function addMove() {
     moveCounter += 1;
     moveDisplay.innerText = moveCounter;
     calcStars(moveCounter);
-}
+};
 
 // calcStars only evaluates based on number of moves. the entire timer 
 // function would need to be modified if we wanted to calculate stars 
@@ -137,7 +133,7 @@ function calcStars(i) {
     } else {
         star2.classList.add("hide");
     };
-}
+};
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -155,16 +151,14 @@ function endGame() {
                 \nYou earned ${stars} stars.
                 \nDo you want to play again?`)) {
         resetGame();
-    }
-}
+    };
+};
 
 //calculate game time when all matches are completed
 function calcGameTime() {
     timeEnd = Date.now();
     let gameDuration = timeEnd - timeStart;
-    let gameSeconds = 0;
-    let gameMinutes = 0;
-    let gameHours = 0;
+    let gameSeconds, gameMinutes, gameHours;
 
     //add leading zero to minutes and seconds when needed
     function leadingZero(i) {
@@ -191,8 +185,11 @@ function calcGameTime() {
         gameHours = Math.floor(gameMinutes / 60);
         gameMinutes = gameMinutes - (gameHours * 60);
     };
+    if (gameSeconds < 60) {
+        gameMinutes = 0;
+    };
     displayTime(gameHours, gameMinutes, gameSeconds);
-}
+};
 
 
 resetGame();
