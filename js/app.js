@@ -121,10 +121,10 @@ function calcStars(i) {
     let star3 = document.getElementById('starThree');
     let star2 = document.getElementById('starTwo');
     let star1 = document.getElementById('starOne');
-    if (i > 12) {
-        stars = 2;
-    } else if (i > 24) {
+    if (i > 24) {
         stars = 1;
+    } else if (i > 12) {
+        stars = 2;
     } else {
         stars = 3;
     };
