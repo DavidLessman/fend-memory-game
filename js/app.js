@@ -56,6 +56,7 @@ function resetGame() {
     moveDisplay.innerText = moveCounter;
     timeStart = 0;
     matchCount = 0;
+    calcStars(moveCounter);
 };
 
 function respondToClick(evt) {
